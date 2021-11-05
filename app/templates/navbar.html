@@ -1,0 +1,33 @@
+<div class="navbar navbar-inverse" role="navigation" id="nav">
+
+
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"> Pitch Hub </a>
+      </div>
+      <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              <li><a href="/">Home</a></li>
+              <li><a href="/category/1" >Pick-up lines</a></li>
+              <li><a href="/category/2">Interview Pitch</a></li>
+              <li><a href="/category/3">Product Pitch</a></li>
+              <li><a href="/category/4">Promotion Pitch</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                {% if current_user.is_authenticated %}
+                <li>{{current_user.username}}</li>
+                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                {% else %}
+                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                {%endif%}
+              </ul>
+      </div>
+
+  </div>
+</div>
