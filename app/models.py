@@ -17,3 +17,16 @@ class Pitch(db.Model):
   user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
   comments = db.relationship("Comments", backref = 'pitch', lazy ='dynamic')
 
+  def save_pitch(self):
+    db.session.add(self)
+    db.session.commit()
+  @classmethod
+  def get_pitch(cls,id):
+    pitches = Pitch.query.order_by(Pitch.date_posted.desc()).filter_by(category_id =id)
+    return pitches
+  @classmethod
+  def get_all_pitches(cls):
+    all_pitches = Pitch.query.all()
+    return all_pitches
+    
+
