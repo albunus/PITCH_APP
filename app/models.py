@@ -27,9 +27,9 @@ class Post(db.Model):  # post table
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
     content = db.Column(db.Text)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     # save post
 
@@ -47,11 +47,11 @@ class User(UserMixin, db.Model):  # user table
     username = db.Column(db.String(255))
     email = db.Column(db.String(255), unique=True, index=True)
     password_hash = db.Column(db.String(255))
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+    # role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     posts = db.relationship('Post', backref='author', lazy='dynamic')
-    # comments = db.relationship('Comment', backref='author', lazy='dynamic')
+    comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
     # save user
 
@@ -60,7 +60,6 @@ class User(UserMixin, db.Model):  # user table
         db.session.commit()
 
     # generate password hash
-
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -70,12 +69,10 @@ class User(UserMixin, db.Model):  # user table
         self.password_hash = generate_password_hash(password)
 
     # check password
-
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
     # login manager
-
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
@@ -83,18 +80,19 @@ class User(UserMixin, db.Model):  # user table
     def _repr_(self):
         return f'User {self.username}'
 
+
 # comment table
 class Comment(db.Model):
-    __tablename__ = 'comments'
+    _tablename_ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text)
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
 
-    def __repr__(self):
+    def _repr_(self):
         return f'Comment {self.content}'
