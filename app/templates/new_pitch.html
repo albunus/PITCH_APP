@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+
+  
+{% extends 'base.html'%}
 {% import 'bootstrap/wtf.html' as wtf %}
 
 <!-- Styles block -->
@@ -9,13 +11,17 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6 updateprofile">
+
+<div id="particles-js">
+  <div class=" row">
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8" id="postform">
+      <h2 class="text-center">Create a New Pitch</h2>
       {{wtf.quick_form(form)}}
     </div>
-    <div class="col-sm-3"></div>
+    <div class="col-md-2"></div>
   </div>
 </div>
-{% endblock %}
+
+{% endblock%}

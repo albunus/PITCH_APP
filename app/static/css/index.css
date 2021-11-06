@@ -1,0 +1,100 @@
+.icon {
+    height: 1.2cm !important;
+    width: 1.2cm !important;
+    border-radius: 50% !important;
+  }
+  button{
+    background-color: green;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+button:hover{
+    background-color: whitesmoke;
+    color: green;
+}
+
+
+.card:hover{
+    box-shadow: 0 0 10px , 0 0 20px rgb(112, 108, 108), 0 0 40px rgb(112, 108, 108);
+    border-radius: 10px;
+    background-color: white;
+}
+
+body {
+    background-color: yellow;
+  }
+  nav {
+    background-color: #1e6e05 !important;
+    height: 8vh !important;
+    padding-top: 1vh !important;
+  }
+  a {
+    color: white !important;
+    
+  }
+  h2 {
+    color: #78290f;
+  }
+  .upvote {
+    background-color: green;
+    padding: 0.5rem;
+    color: white;
+    cursor: pointer;
+  
+  }
+  .dropdown a ,.user {
+    color: #dd9654 !important;
+  }
+  .dropdown a:hover ,.user:hover {
+    cursor: pointer;
+  }
+  .card-img img {
+    border-radius: 50% !important;
+  }
+  hr {
+    background-color: #78290f !important;
+    height: 3px;
+  }
+  footer {
+    color: white !important;
+    margin-top: 3rem !important;
+  }
+  .actions {
+    margin-left: 0.3rem;
+  }
+  h3 {
+    color: #001524;
+  }
+  .comment {
+    background-color:purple;
+    padding: 0.5rem;
+    color: rgb(230, 213, 213);
+    cursor: pointer;
+  }
+  .downvote {
+    background-color: red;
+    padding: 0.5rem;
+    color: rgb(236, 229, 229);
+    cursor: pointer;
+  }
+  span a {
+    color: rgb(245, 237, 237);
+  }
+  .pitch {
+    width: 80%;
+  }
+  #sign {
+    color: #796756 !important;
+  }
+  #create-acc {
+    background-color: rgb(174, 187, 174);
+    color: #ff7d00;
+  }
+  @media (max-width: 1000px) {
+    nav{
+      height: auto !important;
+    }
+  }
