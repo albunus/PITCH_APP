@@ -82,3 +82,19 @@ class User(UserMixin, db.Model):  # user table
 
     def _repr_(self):
         return f'User {self.username}'
+
+# comment table
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text)
+    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Comment {self.content}'
