@@ -1,4 +1,4 @@
-#!/home/access/Desktop/python/pitch_app/virtual/bin/python
+#!/home/access/Desktop/python/PITCH_APP/virtual/bin/python
 
 import sys
 from os.path import join, dirname, exists
