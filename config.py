@@ -36,7 +36,7 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:123@localhost/pitch_app_database'
-    DEBUG = True
+    DEBUG = False
 
 
 config_options = {
