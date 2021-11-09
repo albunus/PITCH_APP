@@ -1,2 +1,2 @@
-{% comment %} python-3.8.12 {% endcomment %}
+python-3.8.12
 
